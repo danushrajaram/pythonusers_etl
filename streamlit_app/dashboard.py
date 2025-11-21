@@ -3,6 +3,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+st.write("📂 Working Directory:", os.getcwd())
+
 
 df = pd.read_csv("../data/processed/cleaned_survey.csv")
 
