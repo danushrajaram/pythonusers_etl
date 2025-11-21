@@ -6,7 +6,7 @@ import os
 st.write("📂 Working Directory:", os.getcwd())
 
 
-df = pd.read_csv("../data/processed/cleaned_survey.csv")
+df = pd.read_csv("data/processed/cleaned_survey.csv")
 
 
 
