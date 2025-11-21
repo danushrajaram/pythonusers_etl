@@ -15,20 +15,25 @@ st.title("📊 StackOverflow Developer Survey 2019 — FULL ETL ANALYTICS REPORT
 st.caption("🚀 All 6 Assignment Questions Below — With Answers + Charts + Insights")
 
 
+# ===============================================================
 # QUESTION 1️ — Avg Age when first code
 # ===============================================================
 
 st.markdown("## 1️ What is the **average age** developers wrote their first line of code?")
 
-avg_age = round(df["Age1stCode"].mean(), 2)
+if "Age1stCode" not in df.columns:
+    st.error(f"Column 'Age1stCode' not found. Available columns: {df.columns.tolist()}")
+else:
+    avg_age = round(df["Age1stCode"].mean(), 2)
 
-col1, col2 = st.columns(2)
-col1.metric("📌 Avg Age (Years)", avg_age)
+    col1, col2 = st.columns(2)
+    col1.metric("📌 Avg Age (Years)", avg_age)
 
-fig_age = px.histogram(df, x="Age1stCode", nbins=30, title="📊 Distribution of First Code Age")
-col2.plotly_chart(fig_age, use_container_width=True)
+    fig_age = px.histogram(df, x="Age1stCode", nbins=30,
+                           title="📊 Distribution of First Code Age")
+    col2.plotly_chart(fig_age, use_container_width=True)
 
-st.info(f"💡 **INSIGHT:** Most developers started coding before {avg_age} years old!")
+    st.info(f"💡 **INSIGHT:** Most developers started coding before {avg_age} years old!")
 
 # ===============================================================
 # QUESTION 2️ — Python % by Country
