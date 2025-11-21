@@ -3,11 +3,20 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
-st.write("📂 Working Directory:", os.getcwd())
+import zipfile
+import os
+import pandas as pd
 
+ZIP_PATH = "data/processed/cleaned_survey.zip"
+CSV_NAME = "cleaned_survey.csv"
 
-df = pd.read_csv("data/processed/cleaned_survey.csv")
+# Unzip only if CSV doesn't exist
+csv_path = f"data/processed/{CSV_NAME}"
+if not os.path.exists(csv_path):
+    with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
+        zip_ref.extractall("data/processed/")
 
+df = pd.read_csv(csv_path)
 
 
 st.set_page_config(page_title="StackOverflow ETL Insights", layout="wide")
