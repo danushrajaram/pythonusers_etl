@@ -4,9 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 
+df = pd.read_csv("../data/processed/cleaned_survey.csv")
 
-
-df = pd.read_csv("data/processed/cleaned_survey.csv")
 
 
 st.set_page_config(page_title="StackOverflow ETL Insights", layout="wide")
